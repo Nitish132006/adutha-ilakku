@@ -12,43 +12,68 @@ interface City {
     description: string;
     studentsReached: number;
     districtsCovered: number;
+    images: string[]; // ✅ added
   }>;
 }
 
 const cities: City[] = [
-  { id: "chennai", name: "Chennai", x: 82, y: 12, events: { "2024": { title: "Chennai Mega Event", description: "Flagship program", studentsReached: 25000, districtsCovered: 8 } } },
+  {
+    id: "chennai",
+    name: "Chennai",
+    x: 82,
+    y: 17,
+    events: {
+      "2024": {
+        title: "Chennai Mega Event",
+        description: "Flagship program",
+        studentsReached: 25000,
+        districtsCovered: 8,
+        images: [
+          "/gallery/chennai1.jpg",
+          "/gallery/chennai2.jpg",
+          "/gallery/chennai3.jpg"
+        ]
+      }
+    }
+  },
 
-  { id: "vellore", name: "Vellore", x: 60, y: 22, events: { "2023": { title: "Vellore Program", description: "Career awareness", studentsReached: 5000, districtsCovered: 2 } } },
+  {
+    id: "vellore",
+    name: "Vellore",
+    x: 55,
+    y: 22,
+    events: {
+      "2023": {
+        title: "Vellore Program",
+        description: "Career awareness",
+        studentsReached: 5000,
+        districtsCovered: 2,
+        images: [
+          "/gallery/vellore1.jpg",
+          "/gallery/vellore2.jpg"
+        ]
+      }
+    }
+  },
 
-  { id: "krishnagiri", name: "Krishnagiri", x: 78, y: 25, events: { "2023": { title: "Krishnagiri Event", description: "Guidance session", studentsReached: 4000, districtsCovered: 2 } } },
-
-  { id: "dharmapuri", name: "Dharmapuri", x: 52, y: 30, events: { "2023": { title: "Dharmapuri Camp", description: "Local outreach", studentsReached: 3000, districtsCovered: 2 } } },
-
-  { id: "tiruvannamalai1", name: "Tiruvannamalai", x: 62, y: 38, events: { "2023": { title: "Tiruvannamalai Session", description: "Student guidance", studentsReached: 3500, districtsCovered: 2 } } },
-
-  { id: "cuddalore", name: "Cuddalore", x: 78, y: 45, events: { "2023": { title: "Cuddalore Program", description: "Coastal outreach", studentsReached: 3200, districtsCovered: 2 } } },
-
-  { id: "salem", name: "Salem", x: 50, y: 45, events: { "2023": { title: "Salem Event", description: "Industry connect", studentsReached: 4500, districtsCovered: 3 } } },
-
-  { id: "coimbatore1", name: "Coimbatore", x: 28, y: 52, events: { "2023": { title: "Coimbatore Tech Fest", description: "Startup focus", studentsReached: 11000, districtsCovered: 5 } } },
-
-  { id: "coimbatore2", name: "Coimbatore", x: 30, y: 60, events: { "2023": { title: "Coimbatore Outreach", description: "Student connect", studentsReached: 6000, districtsCovered: 3 } } },
-
-  { id: "dindigul", name: "Dindigul", x: 45, y: 65, events: { "2023": { title: "Dindigul Drive", description: "Rural connect", studentsReached: 2800, districtsCovered: 2 } } },
-
-  { id: "madurai1", name: "Madurai", x: 55, y: 60, events: { "2023": { title: "Madurai Event", description: "Regional fair", studentsReached: 8500, districtsCovered: 5 } } },
-
-  { id: "madurai2", name: "Madurai", x: 55, y: 72, events: { "2024": { title: "Madurai Expansion", description: "South expansion", studentsReached: 7000, districtsCovered: 4 } } },
-
-  { id: "viluppuram1", name: "Viluppuram", x: 65, y: 55, events: { "2023": { title: "Viluppuram Program", description: "Awareness drive", studentsReached: 3000, districtsCovered: 2 } } },
-
-  { id: "viluppuram2", name: "Viluppuram", x: 55, y: 78, events: { "2024": { title: "Viluppuram South", description: "Extended reach", studentsReached: 3500, districtsCovered: 2 } } },
-
-  { id: "kumbakonam", name: "Kumbakonam", x: 75, y: 75, events: { "2023": { title: "Kumbakonam Session", description: "Temple city program", studentsReached: 2700, districtsCovered: 2 } } },
-
-  { id: "tirunelveli", name: "Tirunelveli", x: 52, y: 88, events: { "2024": { title: "Tirunelveli Summit", description: "South TN summit", studentsReached: 5500, districtsCovered: 3 } } },
-
-  { id: "nagercoil", name: "Nagercoil", x: 52, y: 96, events: { "2024": { title: "Nagercoil Outreach", description: "Final reach", studentsReached: 3200, districtsCovered: 2 } } },
+  {
+    id: "coimbatore",
+    name: "Coimbatore",
+    x: 31,
+    y: 42,
+    events: {
+      "2023": {
+        title: "Coimbatore Tech Fest",
+        description: "Startup focus",
+        studentsReached: 11000,
+        districtsCovered: 5,
+        images: [
+          "/gallery/coimbatore1.jpg",
+          "/gallery/coimbatore2.jpg"
+        ]
+      }
+    }
+  }
 ];
 
 export default function TamilNaduMap() {
@@ -74,14 +99,13 @@ export default function TamilNaduMap() {
 
         <div className="flex flex-col lg:flex-row gap-10">
 
-          {/* ✅ MAP IMAGE + HOTSPOTS */}
+          {/* MAP */}
           <motion.div
             ref={mapRef}
             className="relative w-full lg:w-3/5 mx-auto"
           >
             <div className="relative bg-white rounded-2xl shadow p-6">
 
-              {/* 🔥 YOUR EXACT MAP IMAGE */}
               <img
                 src="/maps/tamilnadu.png"
                 alt="Tamil Nadu Map"
@@ -104,13 +128,9 @@ export default function TamilNaduMap() {
                   onMouseEnter={() => setHoveredCity(city.id)}
                   onMouseLeave={() => setHoveredCity(null)}
                 >
-                  {/* PULSE */}
                   <span className="absolute inline-flex h-5 w-5 rounded-full bg-teal-400 opacity-75 animate-ping"></span>
-
-                  {/* DOT */}
                   <span className="relative inline-flex h-4 w-4 rounded-full bg-teal-600"></span>
 
-                  {/* TOOLTIP */}
                   {hoveredCity === city.id && (
                     <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded">
                       {city.name}
@@ -118,7 +138,6 @@ export default function TamilNaduMap() {
                   )}
                 </div>
               ))}
-
             </div>
           </motion.div>
 
@@ -132,14 +151,76 @@ export default function TamilNaduMap() {
                   onClose={() => setSelectedCity(null)}
                 />
               ) : (
-                <div className="bg-gray-100 p-6 rounded-xl text-center">
-                  <p>Select a city on the map</p>
-                </div>
+                <motion.div
+                  key="default"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="bg-white shadow-xl rounded-2xl overflow-hidden"
+                >
+                  <img
+                    src="/images/default-map.png"
+                    alt="Program"
+                    className="w-full h-100 object-cover"
+                  />
+
+                  <div className="p-6 text-center">
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">
+                      Adutha Ilakku
+                    </h3>
+
+                    <p className="text-gray-600 text-sm">
+                      Empowering students across Tamil Nadu through career guidance.
+                    </p>
+
+                    <p className="mt-4 text-blue-600 font-semibold">
+                      Click on a hotspot →
+                    </p>
+                  </div>
+                </motion.div>
               )}
             </AnimatePresence>
           </div>
 
         </div>
+
+      {/* 🔥 IMAGE SLIDER */}
+<div className="mt-16">
+  <h3 className="text-2xl font-bold text-center mb-6">
+    {selectedCity ? `${selectedCity.name} Highlights` : "Gallery"}
+  </h3>
+
+  <div className="relative">
+
+    {/* SLIDER */}
+    <div className="flex overflow-x-auto gap-4 px-4 scroll-smooth scrollbar-hide">
+      {(selectedCity
+        ? Object.values(selectedCity.events)[0].images
+        : [
+            "/gallery/g1.jpg",
+            "/gallery/g2.webp",
+            "/gallery/g3.webp",
+            "/gallery/g4.jpg",
+            "/gallery/g5.jpg",
+            "/gallery/g6.jpg",
+          ]
+      ).map((img, index) => (
+        <div
+          key={index}
+          className="min-w-[250px] md:min-w-[300px] lg:min-w-[350px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg"
+        >
+          <img
+            src={img}
+            alt="gallery"
+            className="w-full h-52 object-cover"
+          />
+        </div>
+      ))}
+    </div>
+
+  </div>
+</div>
+
       </div>
     </section>
   );

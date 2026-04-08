@@ -29,7 +29,7 @@ export default function HeroSection() {
   const students = useCountUp(100000);
   const careers = useCountUp(100);
   const districts = useCountUp(23);
-  const resources = useCountUp(2018);
+  const resources = useCountUp(72);
 
   return (
     <section className="relative bg-[#f8fafc] text-[#0f172a] overflow-hidden">
@@ -168,9 +168,9 @@ export default function HeroSection() {
 
       <div>
         <p className="text-2xl font-bold text-slate-900">
-          {resources.toLocaleString()}
+          {resources.toLocaleString()}%
         </p>
-        <p className="text-xs text-slate-500 mt-1">Growing Initiative</p>
+        <p className="text-xs text-slate-500 mt-1">beneficiary</p>
       </div>
 
     </div>

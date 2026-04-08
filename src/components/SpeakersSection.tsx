@@ -12,6 +12,8 @@ const speakers = [
   { name: "Er.R.Ashwin", role: "Career Guidance Expert & Analyst", image: "/speakers/s9.jpg" },
   { name: "Mr. Rajmohan Arumugam", role: "Motivational Speaker", image: "/speakers/s11.jpg" },
   { name: "Mr.S. Ramakrishnan", role: "Motivational Speaker", image: "/speakers/s12.jpg" },
+  { name: "Mr. P. Suthahar", role: "Career Counselor", image: "/speakers/s13.jpg" },
+  { name: "Mr.R. Sambasivam", role: "Career Consultant", image: "/speakers/s14.jpg" },
 ];
 
 export default function SpeakersSection() {
