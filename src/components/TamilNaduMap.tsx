@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CityPanel from "./CityPanel";
 
@@ -12,83 +12,133 @@ interface City {
     description: string;
     studentsReached: number;
     districtsCovered: number;
-    images: string[]; // ✅ added
   }>;
 }
 
 const cities: City[] = [
+
   {
     id: "chennai",
     name: "Chennai",
     x: 82,
     y: 17,
     events: {
-      "2024": {
-        title: "Chennai Mega Event",
-        description: "Flagship program",
-        studentsReached: 25000,
-        districtsCovered: 8,
-        images: [
-          "/gallery/chennai1.jpg",
-          "/gallery/chennai2.jpg",
-          "/gallery/chennai3.jpg"
-        ]
-      }
+      "2025": { title: "Chennai Program", description: "Chennai & Chengalpattu", studentsReached: 8000, districtsCovered: 4 },
+      "2024": { title: "Chennai Program", description: "Chennai & Chengalpattu", studentsReached: 8000, districtsCovered: 4 },
+      "2023": { title: "Chennai Program", description: "Chennai & Chengalpattu", studentsReached: 7500, districtsCovered: 4 },
+      "2022": { title: "Chennai Program", description: "Chennai & Chengalpattu", studentsReached: 7500, districtsCovered: 4 }
     }
   },
 
   {
-    id: "vellore",
-    name: "Vellore",
-    x: 55,
-    y: 22,
+    id: "madurai1",
+    name: "Madurai",
+    x: 44,
+    y: 56,
     events: {
-      "2023": {
-        title: "Vellore Program",
-        description: "Career awareness",
-        studentsReached: 5000,
-        districtsCovered: 2,
-        images: [
-          "/gallery/vellore1.jpg",
-          "/gallery/vellore2.jpg"
-        ]
-      }
+      "2025": { title: "Madurai Event", description: "Regional program", studentsReached: 2800, districtsCovered: 3 },
+      "2024": { title: "Madurai Event", description: "Regional program", studentsReached: 2400, districtsCovered: 3 },
+      "2023": { title: "Madurai Event", description: "Regional program", studentsReached: 2200, districtsCovered: 2 },
+      "2022": { title: "Madurai Event", description: "Regional program", studentsReached: 2000, districtsCovered: 2 }
     }
   },
 
   {
-    id: "coimbatore",
+    id: "dindigul",
+    name: "Dindigul",
+    x: 30,
+    y: 51,
+    events: {
+      "2025": { title: "Dindigul Drive", description: "Rural connect", studentsReached: 900, districtsCovered: 1 },
+      "2024": { title: "Dindigul Drive", description: "Rural connect", studentsReached: 750, districtsCovered: 1 },
+      "2023": { title: "Dindigul Drive", description: "Rural connect", studentsReached: 750, districtsCovered: 1 },
+      "2022": { title: "Dindigul Drive", description: "Rural connect", studentsReached: 700, districtsCovered: 1 }
+    }
+  },
+
+  {
+    id: "viluppuram1",
+    name: "Viluppuram",
+    x: 61,
+    y: 51,
+    events: {
+      "2025": { title: "Viluppuram Program", description: "Viluppuram & Thirukovilur", studentsReached: 1400, districtsCovered: 2 },
+      "2024": { title: "Viluppuram Program", description: "Viluppuram & Thirukovilur", studentsReached: 1200, districtsCovered: 1 },
+      "2023": { title: "Viluppuram Program", description: "Viluppuram & Thirukovilur", studentsReached: 900, districtsCovered: 1 },
+      "2022": { title: "Viluppuram Program", description: "Viluppuram & Thirukovilur", studentsReached: 850, districtsCovered: 1 }
+    }
+  },
+
+  {
+    id: "tiruvannamalai1",
+    name: "Tiruvannamalai",
+    x: 65,
+    y: 38,
+    events: {
+      "2025": { title: "Tiruvannamalai Program", description: "Career guidance", studentsReached: 1200, districtsCovered: 1 }
+    }
+  },
+
+  {
+    id: "coimbatore1",
     name: "Coimbatore",
     x: 31,
     y: 42,
     events: {
-      "2023": {
-        title: "Coimbatore Tech Fest",
-        description: "Startup focus",
-        studentsReached: 11000,
-        districtsCovered: 5,
-        images: [
-          "/gallery/coimbatore1.jpg",
-          "/gallery/coimbatore2.jpg"
-        ]
-      }
+      "2025": { title: "Coimbatore Program", description: "Tech sessions", studentsReached: 1500, districtsCovered: 1 }
+    }
+  },
+
+  {
+    id: "salem",
+    name: "Salem",
+    x: 42,
+    y: 37,
+    events: {
+      "2025": { title: "Salem Event", description: "Industry connect", studentsReached: 800, districtsCovered: 1 },
+      "2024": { title: "Salem Event", description: "Industry connect", studentsReached: 750, districtsCovered: 1 }
+    }
+  },
+
+  {
+    id: "cuddalore",
+    name: "Cuddalore",
+    x: 70,
+    y: 45,
+    events: {
+      "2025": { title: "Cuddalore Program", description: "Coastal outreach", studentsReached: 1300, districtsCovered: 2 }
     }
   }
+
 ];
 
 export default function TamilNaduMap() {
   const [selectedCity, setSelectedCity] = useState<City | null>(null);
   const [hoveredCity, setHoveredCity] = useState<string | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const mapRef = useRef<HTMLDivElement>(null);
+
+  // 🔥 Auto slideshow
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % 6);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative w-full py-16 lg:py-24 overflow-hidden">
 
       <div className="section-container relative z-10">
 
-    
-          
-      
+        {/* TITLE */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-center mb-12"
+        >
+        </motion.div>
 
         <div className="flex flex-col lg:flex-row gap-10">
 
@@ -153,7 +203,7 @@ export default function TamilNaduMap() {
                 >
                   <img
                     src="/images/default-map.png"
-                    alt="Program"
+                    alt="Adutha Ilakku Program"
                     className="w-full h-100 object-cover"
                   />
 
@@ -163,11 +213,12 @@ export default function TamilNaduMap() {
                     </h3>
 
                     <p className="text-gray-600 text-sm">
-                      Empowering students across Tamil Nadu through career guidance.
+                      Empowering students across Tamil Nadu through career guidance,
+                      mentorship, and real-world exposure.
                     </p>
 
                     <p className="mt-4 text-blue-600 font-semibold">
-                      Click on a hotspot →
+                      Click on a hotspot to explore impact →
                     </p>
                   </div>
                 </motion.div>
@@ -177,43 +228,34 @@ export default function TamilNaduMap() {
 
         </div>
 
-      {/* 🔥 IMAGE SLIDER */}
-<div className="mt-16">
+      <div className="mt-16 w-full">
+
   <h3 className="text-2xl font-bold text-center mb-6">
-    {selectedCity ? `${selectedCity.name} Highlights` : "Gallery"}
+    Gallery
   </h3>
 
-  <div className="relative">
+  <div className="relative w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-xl bg-black flex items-center justify-center">
 
-    {/* SLIDER */}
-    <div className="flex overflow-x-auto gap-4 px-4 scroll-smooth scrollbar-hide">
-      {(selectedCity
-        ? Object.values(selectedCity.events)[0].images
-        : [
-            "/gallery/g1.jpg",
-            "/gallery/g2.webp",
-            "/gallery/g3.webp",
-            "/gallery/g4.jpg",
-            "/gallery/g5.jpg",
-            "/gallery/g6.jpg",
-          ]
-      ).map((img, index) => (
-        <div
-          key={index}
-          className="min-w-[250px] md:min-w-[300px] lg:min-w-[350px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg"
-        >
-          <img
-            src={img}
-            alt="gallery"
-            className="w-full h-52 object-cover"
-          />
-        </div>
-      ))}
-    </div>
+    {[
+      "/gallery/gg1.jpg",
+      "/gallery/gg2.jpg",
+      "/gallery/gg3.jpg",
+      "/gallery/g4.jpg",
+      "/gallery/g5.jpg",
+      "/gallery/g6.jpg"
+    ].map((img, index) => (
+      <img
+        key={index}
+        src={img}
+        alt="gallery"
+        className={`w-full h-auto object-contain transition-opacity duration-700 ${
+          index === currentSlide ? "opacity-100" : "opacity-0 absolute top-0 left-0"
+        }`}
+      />
+    ))}
 
   </div>
 </div>
-
       </div>
     </section>
   );

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function AboutProgram() {
   return (
-    <section className="bg-white py-20 px-6 lg:px-12">
+    <section className="bg-white pt-32 pb-20 px-6 lg:px-12">
       <div  id="about-program" className="max-w-6xl mx-auto">
 
         {/* HEADER */}
@@ -10,9 +10,9 @@ export default function AboutProgram() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-24"
         >
-          <p className="text-cyan-600 text-sm font-medium tracking-widest uppercase mb-3">
+          <p className="text-cyan-600 text-sm font-medium tracking-widest uppercase mb-3 mu-3 ">
             About the Program
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
