@@ -92,9 +92,7 @@ export default function TamilNaduMap() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold">
-            Tamil Nadu Impact Map
-          </h2>
+          
         </motion.div>
 
         <div className="flex flex-col lg:flex-row gap-10">
