@@ -86,14 +86,9 @@ export default function TamilNaduMap() {
 
       <div className="section-container relative z-10">
 
-        {/* TITLE */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
-        >
+    
           
-        </motion.div>
+      
 
         <div className="flex flex-col lg:flex-row gap-10">
 
