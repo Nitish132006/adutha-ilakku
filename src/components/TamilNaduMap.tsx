@@ -11,7 +11,7 @@ interface City {
     title: string;
     description: string;
     studentsReached: number;
-    districtsCovered: number;
+    beneficiariesReached: number; // ✅ UPDATED
   }>;
 }
 
@@ -23,10 +23,10 @@ const cities: City[] = [
     x: 82,
     y: 17,
     events: {
-      "2025": { title: "Chennai Program", description: "Chennai & Chengalpattu", studentsReached: 8000, districtsCovered: 4 },
-      "2024": { title: "Chennai Program", description: "Chennai & Chengalpattu", studentsReached: 8000, districtsCovered: 4 },
-      "2023": { title: "Chennai Program", description: "Chennai & Chengalpattu", studentsReached: 7500, districtsCovered: 4 },
-      "2022": { title: "Chennai Program", description: "Chennai & Chengalpattu", studentsReached: 7500, districtsCovered: 4 }
+      "2025": { title: "Chennai Program", description: "Chennai & Chengalpattu", studentsReached: 8000, beneficiariesReached: 30000 },
+      "2024": { title: "Chennai Program", description: "Chennai & Chengalpattu", studentsReached: 8000, beneficiariesReached: 28000 },
+      "2023": { title: "Chennai Program", description: "Chennai & Chengalpattu", studentsReached: 7500, beneficiariesReached: 25000 },
+      "2022": { title: "Chennai Program", description: "Chennai & Chengalpattu", studentsReached: 7500, beneficiariesReached: 20000 }
     }
   },
 
@@ -36,10 +36,10 @@ const cities: City[] = [
     x: 44,
     y: 56,
     events: {
-      "2025": { title: "Madurai Event", description: "Regional program", studentsReached: 2800, districtsCovered: 3 },
-      "2024": { title: "Madurai Event", description: "Regional program", studentsReached: 2400, districtsCovered: 3 },
-      "2023": { title: "Madurai Event", description: "Regional program", studentsReached: 2200, districtsCovered: 2 },
-      "2022": { title: "Madurai Event", description: "Regional program", studentsReached: 2000, districtsCovered: 2 }
+      "2025": { title: "Madurai Event", description: "Regional program", studentsReached: 2800, beneficiariesReached: 10000 },
+      "2024": { title: "Madurai Event", description: "Regional program", studentsReached: 2400, beneficiariesReached: 8000 },
+      "2023": { title: "Madurai Event", description: "Regional program", studentsReached: 2200, beneficiariesReached: 6000 },
+      "2022": { title: "Madurai Event", description: "Regional program", studentsReached: 2000, beneficiariesReached: 5500 }
     }
   },
 
@@ -49,10 +49,10 @@ const cities: City[] = [
     x: 30,
     y: 51,
     events: {
-      "2025": { title: "Dindigul Drive", description: "Rural connect", studentsReached: 900, districtsCovered: 1 },
-      "2024": { title: "Dindigul Drive", description: "Rural connect", studentsReached: 750, districtsCovered: 1 },
-      "2023": { title: "Dindigul Drive", description: "Rural connect", studentsReached: 750, districtsCovered: 1 },
-      "2022": { title: "Dindigul Drive", description: "Rural connect", studentsReached: 700, districtsCovered: 1 }
+      "2025": { title: "Dindigul Drive", description: "Rural connect", studentsReached: 900, beneficiariesReached: 4000 },
+      "2024": { title: "Dindigul Drive", description: "Rural connect", studentsReached: 750, beneficiariesReached: 3800 },
+      "2023": { title: "Dindigul Drive", description: "Rural connect", studentsReached: 750, beneficiariesReached: 3500 },
+      "2022": { title: "Dindigul Drive", description: "Rural connect", studentsReached: 700, beneficiariesReached: 3300 }
     }
   },
 
@@ -62,10 +62,10 @@ const cities: City[] = [
     x: 61,
     y: 51,
     events: {
-      "2025": { title: "Viluppuram Program", description: "Viluppuram & Thirukovilur", studentsReached: 1400, districtsCovered: 2 },
-      "2024": { title: "Viluppuram Program", description: "Viluppuram & Thirukovilur", studentsReached: 1200, districtsCovered: 1 },
-      "2023": { title: "Viluppuram Program", description: "Viluppuram & Thirukovilur", studentsReached: 900, districtsCovered: 1 },
-      "2022": { title: "Viluppuram Program", description: "Viluppuram & Thirukovilur", studentsReached: 850, districtsCovered: 1 }
+      "2025": { title: "Viluppuram Program", description: "Viluppuram & Thirukovilur", studentsReached: 1400, beneficiariesReached: 5000 },
+      "2024": { title: "Viluppuram Program", description: "Viluppuram & Thirukovilur", studentsReached: 1200, beneficiariesReached: 4800 },
+      "2023": { title: "Viluppuram Program", description: "Viluppuram & Thirukovilur", studentsReached: 900, beneficiariesReached: 4700 },
+      "2022": { title: "Viluppuram Program", description: "Viluppuram & Thirukovilur", studentsReached: 850, beneficiariesReached: 4400 }
     }
   },
 
@@ -75,7 +75,7 @@ const cities: City[] = [
     x: 65,
     y: 38,
     events: {
-      "2025": { title: "Tiruvannamalai Program", description: "Career guidance", studentsReached: 1200, districtsCovered: 1 }
+      "2025": { title: "Tiruvannamalai Program", description: "Career guidance", studentsReached: 1200, beneficiariesReached: 4000 }
     }
   },
 
@@ -85,7 +85,7 @@ const cities: City[] = [
     x: 31,
     y: 42,
     events: {
-      "2025": { title: "Coimbatore Program", description: "Tech sessions", studentsReached: 1500, districtsCovered: 1 }
+      "2025": { title: "Coimbatore Program", description: "Tech sessions", studentsReached: 1500, beneficiariesReached: 5000 }
     }
   },
 
@@ -95,8 +95,8 @@ const cities: City[] = [
     x: 42,
     y: 37,
     events: {
-      "2025": { title: "Salem Event", description: "Industry connect", studentsReached: 800, districtsCovered: 1 },
-      "2024": { title: "Salem Event", description: "Industry connect", studentsReached: 750, districtsCovered: 1 }
+      "2025": { title: "Salem Event", description: "Industry connect", studentsReached: 800, beneficiariesReached: 5000 },
+      "2024": { title: "Salem Event", description: "Industry connect", studentsReached: 750, beneficiariesReached: 4500 }
     }
   },
 
@@ -106,7 +106,7 @@ const cities: City[] = [
     x: 70,
     y: 45,
     events: {
-      "2025": { title: "Cuddalore Program", description: "Coastal outreach", studentsReached: 1300, districtsCovered: 2 }
+      "2025": { title: "Cuddalore Program", description: "Coastal outreach", studentsReached: 1300, beneficiariesReached: 5000 }
     }
   }
 
@@ -118,12 +118,10 @@ export default function TamilNaduMap() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const mapRef = useRef<HTMLDivElement>(null);
 
-  // 🔥 Auto slideshow
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % 6);
     }, 3000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -131,14 +129,6 @@ export default function TamilNaduMap() {
     <section className="relative w-full py-16 lg:py-24 overflow-hidden">
 
       <div className="section-container relative z-10">
-
-        {/* TITLE */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
-        >
-        </motion.div>
 
         <div className="flex flex-col lg:flex-row gap-10">
 
@@ -155,7 +145,6 @@ export default function TamilNaduMap() {
                 className="w-full rounded-xl"
               />
 
-              {/* HOTSPOTS */}
               {cities.map((city) => (
                 <div
                   key={city.id}
@@ -228,34 +217,35 @@ export default function TamilNaduMap() {
 
         </div>
 
-      <div className="mt-16 w-full">
+        {/* GALLERY */}
+        <div className="mt-16 w-full">
+          <h3 className="text-2xl font-bold text-center mb-6">
+            Gallery
+          </h3>
 
-  <h3 className="text-2xl font-bold text-center mb-6">
-    Gallery
-  </h3>
+          <div className="relative w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-xl bg-black flex items-center justify-center">
 
-  <div className="relative w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-xl bg-black flex items-center justify-center">
+            {[
+              "/gallery/gg1.jpg",
+              "/gallery/gg2.jpg",
+              "/gallery/gg3.jpg",
+              "/gallery/g4.jpg",
+              "/gallery/g5.jpg",
+              "/gallery/g6.jpg"
+            ].map((img, index) => (
+              <img
+                key={index}
+                src={img}
+                alt="gallery"
+                className={`w-full h-auto object-contain transition-opacity duration-700 ${
+                  index === currentSlide ? "opacity-100" : "opacity-0 absolute top-0 left-0"
+                }`}
+              />
+            ))}
 
-    {[
-      "/gallery/gg1.jpg",
-      "/gallery/gg2.jpg",
-      "/gallery/gg3.jpg",
-      "/gallery/g4.jpg",
-      "/gallery/g5.jpg",
-      "/gallery/g6.jpg"
-    ].map((img, index) => (
-      <img
-        key={index}
-        src={img}
-        alt="gallery"
-        className={`w-full h-auto object-contain transition-opacity duration-700 ${
-          index === currentSlide ? "opacity-100" : "opacity-0 absolute top-0 left-0"
-        }`}
-      />
-    ))}
+          </div>
+        </div>
 
-  </div>
-</div>
       </div>
     </section>
   );

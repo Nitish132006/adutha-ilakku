@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 /* COUNT ANIMATION FUNCTION */
 function useCountUp(end: number, duration = 10000) {
@@ -26,6 +27,7 @@ function useCountUp(end: number, duration = 10000) {
 }
 
 export default function HeroSection() {
+  const navigate = useNavigate();
   const students = useCountUp(100000);
   const careers = useCountUp(100);
   const districts = useCountUp(23);
@@ -88,25 +90,24 @@ export default function HeroSection() {
             </p>
 
             <div className="flex gap-4">
-              <button
-  onClick={() => {
-    const section = document.getElementById("program-section");
-    section?.scrollIntoView({ behavior: "smooth" });
-  }}
-  className="bg-cyan-600 hover:bg-cyan-500 px-6 py-3 rounded-lg text-white shadow-md"
->
-  Explore Careers
-</button>
-              <button
-  onClick={() => {
-    const section = document.getElementById("about-program");
-    section?.scrollIntoView({ behavior: "smooth" });
-  }}
-  className="border border-slate-300 px-6 py-3 rounded-lg"
->
-  About
-</button>
-            </div>
+
+  {/* Explore Careers */}
+  <button
+    onClick={() => navigate("/program")}
+    className="bg-cyan-600 hover:bg-cyan-500 px-6 py-3 rounded-lg text-white shadow-md"
+  >
+    Explore Careers
+  </button>
+
+  {/* About */}
+  <button
+    onClick={() => navigate("/about")}
+    className="border border-slate-300 px-6 py-3 rounded-lg"
+  >
+    About
+  </button>
+
+</div>
           </motion.div>
 
        <motion.div
